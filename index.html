@@ -1,0 +1,72 @@
+<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Syndicate Desk</title></head><body>
+<style>
+  :root {
+    --bg:#ffffff; --panel:#f6f7f9; --ink:#1a1d21; --muted:#6b7280;
+    --line:#e4e7eb; --pos:#0a8f5b; --neg:#d1435b; --accent:#2f6feb;
+  }
+  @media (prefers-color-scheme:dark) {
+    :root { --bg:#0f1216; --panel:#171b21; --ink:#e8eaed; --muted:#9aa3ad;
+             --line:#262b33; --pos:#33c088; --neg:#f0687e; --accent:#5b8cff; }
+  }
+  :root[data-theme="dark"] { --bg:#0f1216; --panel:#171b21; --ink:#e8eaed;
+    --muted:#9aa3ad; --line:#262b33; --pos:#33c088; --neg:#f0687e; --accent:#5b8cff; }
+  :root[data-theme="light"] { --bg:#fff; --panel:#f6f7f9; --ink:#1a1d21;
+    --muted:#6b7280; --line:#e4e7eb; --pos:#0a8f5b; --neg:#d1435b; --accent:#2f6feb; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+    font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
+  .wrap { max-width:960px; margin:0 auto; padding:24px 18px 60px; }
+  h1 { font-size:20px; margin:0 0 2px; letter-spacing:.3px; }
+  .sub { color:var(--muted); font-size:13px; margin-bottom:20px; }
+  .banner { background:var(--neg); color:#fff; padding:10px 14px; border-radius:8px;
+    font-weight:600; margin-bottom:18px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:12px; margin-bottom:22px; }
+  .kpi { background:var(--panel); border:1px solid var(--line); border-radius:10px;
+    padding:12px 14px; }
+  .kpi .lbl { color:var(--muted); font-size:12px; text-transform:uppercase;
+    letter-spacing:.5px; }
+  .kpi .val { font-size:22px; font-weight:650; margin-top:3px; }
+  .panel { background:var(--panel); border:1px solid var(--line); border-radius:10px;
+    padding:14px 16px; margin-bottom:18px; overflow-x:auto; }
+  .panel h2 { font-size:13px; text-transform:uppercase; letter-spacing:.6px;
+    color:var(--muted); margin:0 0 10px; }
+  table { width:100%; border-collapse:collapse; font-size:13.5px; }
+  th,td { text-align:left; padding:7px 9px; border-bottom:1px solid var(--line);
+    white-space:nowrap; }
+  th { color:var(--muted); font-weight:600; font-size:12px; }
+  td.num,th.num { text-align:right; font-variant-numeric:tabular-nums; }
+  td.detail { white-space:normal; color:var(--muted); font-size:12.5px; }
+  .pos { color:var(--pos); } .neg { color:var(--neg); } .muted { color:var(--muted); }
+  .lag { background:var(--line); color:var(--muted); font-size:11px; padding:1px 5px;
+    border-radius:5px; }
+  .regime { display:inline-block; padding:3px 10px; border-radius:20px; font-weight:600;
+    font-size:13px; background:var(--accent); color:#fff; }
+  .foot { color:var(--muted); font-size:12px; margin-top:26px; }
+</style>
+<div class="wrap">
+  <h1>◆ SYNDICATE — Desk Dashboard</h1>
+  <div class="sub">Paper trading · Phase 1 · as of 2026-07-08</div>
+  
+  <div class="grid">
+    <div class="kpi"><div class="lbl">Equity</div><div class="val">£1,004.75</div></div>
+    <div class="kpi"><div class="lbl">Day P&amp;L</div><div class="val pos">£+5.25</div></div>
+    <div class="kpi"><div class="lbl">Cumulative</div><div class="val pos">£+4.75</div></div>
+    <div class="kpi"><div class="lbl">Drawdown</div><div class="val">0.00%</div></div>
+    <div class="kpi"><div class="lbl">Realised</div><div class="val muted">£+0.00</div></div>
+  </div>
+  <div class="panel"><h2>Equity curve</h2><svg viewBox="0 0 520 90" width="100%" preserveAspectRatio="none" role="img" aria-label="equity curve"><polyline fill="none" stroke="var(--pos)" stroke-width="2" points="0.0,85.0 520.0,5.0"/></svg></div>
+  <div class="panel"><h2>Open positions</h2>
+    <table><thead><tr><th>Symbol</th><th>Dir</th><th class="num">Size</th>
+      <th class="num">Entry</th><th class="num">Stop</th><th>Agent</th>
+      <th class="num">Unreal P&amp;L</th></tr></thead><tbody><tr><td>CL</td><td class="neg">short</td><td class="num">2.4358</td><td class="num">72.1639</td><td class="num">80.4107</td><td>Ember</td><td class="num neg">£-6.32</td></tr><tr><td>SI</td><td class="neg">short</td><td class="num">3.4936</td><td class="num">60.3748</td><td class="num">64.7395</td><td>Ember</td><td class="num pos">£+6.41</td></tr><tr><td>GLD</td><td class="neg">short</td><td class="num">1.3322</td><td class="num">377.3012</td><td class="num">390.2329</td><td>Atlas</td><td class="num pos">£+3.80</td></tr><tr><td>GC</td><td class="neg">short</td><td class="num">0.0268</td><td class="num">4114.5418</td><td class="num">4308.3105</td><td>Ember</td><td class="num pos">£+0.86</td></tr></tbody></table>
+  </div>
+  <div class="panel"><h2>Decisions — ranked by conviction × EV</h2>
+    <table><thead><tr><th class="num">#</th><th>Agent</th><th>Symbol</th><th>Dir</th>
+      <th class="num">Conv</th><th class="num">EV</th><th class="num">Score</th>
+      <th>Status</th><th>Detail</th></tr></thead><tbody><tr><td class="num">1</td><td>Vega</td><td>AAPL</td><td class="pos">long</td><td class="num">0.39</td><td class="num">+1.0%</td><td class="num">0.0044</td><td>🚫 vetoed</td><td class="detail">position notional 5.25 below minimum 10.05 (buying power nearly exhausted)</td></tr><tr><td class="num">2</td><td>Vega</td><td>TSLA</td><td class="neg">short</td><td class="num">0.36</td><td class="num">+0.9%</td><td class="num">0.0028</td><td>🚫 vetoed</td><td class="detail">position notional 5.25 below minimum 10.05 (buying power nearly exhausted)</td></tr><tr><td class="num">3</td><td>Vega</td><td>META</td><td class="pos">long</td><td class="num">0.31</td><td class="num">+0.8%</td><td class="num">0.0028</td><td>🚫 vetoed</td><td class="detail">position notional 5.25 below minimum 10.05 (buying power nearly exhausted)</td></tr><tr><td class="num">4</td><td>Ember</td><td>HG</td><td class="neg">short</td><td class="num">0.29</td><td class="num">+0.9%</td><td class="num">0.0022</td><td>🚫 vetoed</td><td class="detail">position notional 5.25 below minimum 10.05 (buying power nearly exhausted)</td></tr><tr><td class="num">5</td><td>Sterling</td><td>USDCAD</td><td class="pos">long</td><td class="num">0.31</td><td class="num">+0.4%</td><td class="num">0.0014</td><td>🚫 vetoed</td><td class="detail">position notional 5.25 below minimum 10.05 (buying power nearly exhausted)</td></tr><tr><td class="num">6</td><td>Sterling</td><td>USDJPY</td><td class="pos">long</td><td class="num">0.27</td><td class="num">+0.3%</td><td class="num">0.0011</td><td>🚫 vetoed</td><td class="detail">position notional 5.25 below minimum 10.05 (buying power nearly exhausted)</td></tr><tr><td class="num">7</td><td>Sterling</td><td>AUDUSD</td><td class="neg">short</td><td class="num">0.27</td><td class="num">+0.3%</td><td class="num">0.0008</td><td>🚫 vetoed</td><td class="detail">position notional 5.25 below minimum 10.05 (buying power nearly exhausted)</td></tr></tbody></table>
+  </div>
+  <div class="foot">Every position carries a stop · risk ≤ 2% · 20% drawdown breaker ·
+    no leverage. Risk enforced by the Chair (deterministic). Paper capital only.</div>
+</div>
+</body></html>
